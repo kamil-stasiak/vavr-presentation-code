@@ -35,11 +35,9 @@ public class Main1 {
     private static String messagesToCategory(Message e) {
         if (Phone.validate(e.getSource())) {
             return "PHONE";
-        }
-        if (Mail.validate(e.getSource())) {
+        } else if (Mail.validate(e.getSource())) {
             return "MAIL";
-        }
-        if (GG.validate(e.getSource())) {
+        } else if (GG.validate(e.getSource())) {
             return "GG";
         }
         return "OTHER";

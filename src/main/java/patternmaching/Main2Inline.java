@@ -1,5 +1,6 @@
 package patternmaching;
 
+import io.vavr.Predicates;
 import io.vavr.collection.List;
 
 import java.util.Arrays;
@@ -8,6 +9,7 @@ import static io.vavr.API.*;
 import static io.vavr.Predicates.*;
 
 // https://www.baeldung.com/vavr-pattern-matching
+// https://static.javadoc.io/io.vavr/vavr/0.9.2/io/vavr/Predicates.html
 // Tutaj chciałbym pokazać zalety tej konstrukcji więc korzystam z vavrowych struktura danych
 
 public class Main2Inline {
@@ -16,12 +18,18 @@ public class Main2Inline {
 //        Predicates.anyOf();
 //        Predicates.exists();
 //        Predicates.forAll((e) -> true);
+//        Predicates.instanceOf()
+//        Predicates.is()
+//        Predicates.isIn()
+//        Predicates.isNotNull()
+//        Predicates.isNull()
+//        Predicates.noneOf()
 
 //        List<Integer> list = List.of(2, 4, 6, 8);
         List<Integer> list = List.of(1, 4, 3, 5, 7);
 
         // expression - returns a value
-        String result = Match(list).of(
+        String result1 = Match(list).of(
                 Case($(List::isEmpty), "Empty"),
                 Case($(forAll(Numbers::isOdd)), "All odds"),
                 Case($(forAll(Numbers::isEven)), "All evens"),
@@ -39,13 +47,13 @@ public class Main2Inline {
             result2 = "At least one odd and one even and every number is smaller than 11";
         }
 
-        System.out.println(result);
+        System.out.println(result1);
         System.out.println(result2);
     }
 
-    private static void main2() {
+    private static void javaList() {
         java.util.List<Integer> list = Arrays.asList(1, 2, 3);
-        boolean result = list.stream().allMatch(Numbers::isEven);
+        boolean result = list.stream().allMatch(Numbers::isEven); // forAll in pure Java
     }
 
     private static boolean oneOddOneEvenAndSmallerThen11(List<Integer> list) {
