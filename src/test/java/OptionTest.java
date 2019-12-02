@@ -1,38 +1,33 @@
 import io.vavr.control.Option;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.lang.String.format;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Optional;
 
-class OptionTest {
-
+public class OptionTest {
     private static final String ERROR_MESSAGE = "Ups coś poszło nie tak ¯\\_(ツ)_/¯";
 
     private static Person person = Person.builder().age(42).name(null).build();
 
-
-
     @Test
-    @DisplayName("Optional :(")
-    void personAgeLength() {
+    public void optional() {
         String message = Optional.of(person)
                 .map(Person::getName)
-                .map(OptionsHelper::textLength) // null is OK
-                .map(OptionsHelper::formatMessage)
+                .map(StringsHelper::textLength)
+                .map(length -> format("Twoje imie ma %s znaków", length))
                 .orElse(ERROR_MESSAGE);
 
-        assertEquals("Twoje imie ma 0 znaków", message);
+        assertEquals(ERROR_MESSAGE, message);
     }
 
     @Test
-    @DisplayName("Option :)")
-    void personAgeLengthOption() {
+    public void option() {
         String message = Option.of(person)
                 .map(Person::getName)
-                .map(OptionsHelper::textLength) // null is OK
-                .map(OptionsHelper::formatMessage)
+                .map(StringsHelper::textLength)
+                .map(length -> format("Twoje imie ma %s znaków", length))
                 .getOrElse(ERROR_MESSAGE);
 
         assertEquals("Twoje imie ma 0 znaków", message);

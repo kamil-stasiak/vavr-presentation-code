@@ -3,16 +3,15 @@ package pipeline;
 import io.vavr.control.Option;
 
 public class SimpleOption {
-    CustomerAssembler customerAssembler;
-    CustomerAdditionalInfoClient customerAdditionalInfoClient;
-    CustomerRepository customerRepository;
+    CustomerAssembler customerAssembler = new CustomerAssembler();
+    CustomerAdditionalInfoClient customerAdditionalInfoClient = new CustomerAdditionalInfoClient();
+    CustomerRepository customerRepository = new CustomerRepository();
 
     public static void main(String[] args) {
         SimpleOption simpleOption = new SimpleOption();
 
-        CustomerDetailedDto allCustomerData = simpleOption.getDetailedCustomerDataController1("UUID: 123");
+        CustomerDetailedDto allCustomerData = simpleOption.getDetailedCustomerDataController3("UUID: 123");
         System.out.println(allCustomerData);
-        ;
     }
 
     @SomeAddnotaion
