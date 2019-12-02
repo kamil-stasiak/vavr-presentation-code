@@ -70,7 +70,7 @@ public class ForComperhensionTest {
     }
 
     @Test
-    public void test6() {
+    public void forComperhensionCode() {
         List<String> messages = Iterator.ofAll(List("A1", "A2")).flatMap((a) -> {
             return Iterator.ofAll(List("B1", "B2")).flatMap((b) -> {
                 return Iterator.ofAll(List("C1", "C2")).map((c) -> {
