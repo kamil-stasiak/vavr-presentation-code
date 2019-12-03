@@ -4,6 +4,8 @@ import io.vavr.collection.Seq;
 import io.vavr.control.Option;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 import static io.vavr.API.*;
 import static org.junit.Assert.assertTrue;
 
@@ -35,5 +37,14 @@ public class OptionTest {
     public void peekOnNone() {
         Option<Object> none = None().peek(API::println);
         assertTrue(none.isEmpty());
+    }
+
+    @Test
+    public void listOfOption() {
+        List<Option<?>> list = List(Some(42), Some(24), None());
+        list.forEach(API::println);
+        List<?> objects = list.flatMap(o -> o);
+        objects.forEach(API::println);
+//        System.out.println(None().iterator().hasNext());
     }
 }
