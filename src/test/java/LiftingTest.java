@@ -21,7 +21,7 @@ public class LiftingTest {
         assertTrue(optionEmpty.isEmpty());
 
         Option<Double> optionSome = Function2.lift(division).apply(10, 5);
-        assertFalse(optionSome.isEmpty());
+        assertTrue(optionSome.isDefined());
     }
     
     @Test
