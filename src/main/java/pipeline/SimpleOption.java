@@ -14,19 +14,19 @@ public class SimpleOption {
         System.out.println(allCustomerData);
     }
 
-    @SomeAddnotaion
+    @SomeAnnotaion
     private CustomerDetailedDto getDetailedCustomerDataController1(String customerID) {
         return customerAdditionalInfoClient.getDetailedInfo(customerAssembler.toDto(customerRepository.find(customerID)));
     }
 
-    @SomeAddnotaion
+    @SomeAnnotaion
     private CustomerDetailedDto getDetailedCustomerDataController2(String customerID) {
         CustomerDs customerDs = customerRepository.find(customerID);
         CustomerDto customerDto = customerAssembler.toDto(customerDs);
         return customerAdditionalInfoClient.getDetailedInfo(customerDto);
     }
 
-    @SomeAddnotaion
+    @SomeAnnotaion
     // Pipeline pattern
     private CustomerDetailedDto getDetailedCustomerDataController3(String customerID) {
         return Option.of(customerID)

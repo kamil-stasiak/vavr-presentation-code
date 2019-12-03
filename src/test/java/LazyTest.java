@@ -22,15 +22,29 @@ public class LazyTest {
             }
         });
 
-        CheckedFunction0<Integer> integerCheckedFunction0 = API.CheckedFunction(() -> {
-            Thread.sleep(20);
-            return 10;
-        });
-
         Instant start = Instant.now();
         System.out.println(lazy.get());
         Instant afterFirsCall = Instant.now();
         System.out.println(lazy.get());
+        Instant afterSecondCall = Instant.now();
+
+        System.out.println(format("Duration between start and first call: %d milliseconds",
+                Duration.between(start, afterFirsCall).toMillis()));
+        System.out.println(format("Duration between start and second call: %d milliseconds",
+                Duration.between(start, afterSecondCall).toMillis()));
+    }
+
+    @Test
+    public void timeout2() {
+        CheckedFunction0<String> integerCheckedFunction0 = API.CheckedFunction(() -> {
+            Thread.sleep(2000);
+            return "Message";
+        });
+
+        Instant start = Instant.now();
+        System.out.println(integerCheckedFunction0.unchecked().apply());
+        Instant afterFirsCall = Instant.now();
+        System.out.println(integerCheckedFunction0.unchecked().apply());
         Instant afterSecondCall = Instant.now();
 
         System.out.println(format("Duration between start and first call: %d milliseconds",

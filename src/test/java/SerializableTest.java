@@ -1,8 +1,8 @@
 import io.vavr.control.Option;
 import lombok.Value;
 import org.junit.Test;
+import serializer.SerializeUtils;
 
-import java.io.NotSerializableException;
 import java.io.Serializable;
 
 import static org.junit.Assert.assertEquals;

@@ -1,3 +1,5 @@
+package serializer;
+
 import io.vavr.API;
 import io.vavr.control.Try;
 

@@ -1,3 +1,5 @@
+package serializer;
+
 import io.vavr.control.Option;
 
 import java.io.*;

@@ -1,11 +1,11 @@
 package patternmaching;
 
-class Numbers {
-    static boolean isOdd(Integer number) {
+public class Numbers {
+    public static boolean isOdd(Integer number) {
         return !isEven(number);
     }
 
-    static boolean isEven(Integer number) {
+    public static boolean isEven(Integer number) {
         return number % 2 == 0;
     }
 }

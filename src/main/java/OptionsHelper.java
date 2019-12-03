@@ -17,6 +17,6 @@ public class OptionsHelper {
     }
 
     public static String formatMessage(Integer integer) {
-        return "Twoje imie ma " +  integer + " znaków";
+        return "Twoje imię ma " +  integer + " znaków";
     }
 }

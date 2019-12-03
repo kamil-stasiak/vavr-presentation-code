@@ -6,7 +6,5 @@ public class FunctionComparision {
     public void test() {
         Function1<String, Integer> length = String::length;
         Function1<String, Integer> length2 = String::length;
-
-
     }
 }

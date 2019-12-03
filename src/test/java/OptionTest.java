@@ -4,8 +4,6 @@ import io.vavr.collection.Seq;
 import io.vavr.control.Option;
 import org.junit.Test;
 
-import java.util.Iterator;
-
 import static io.vavr.API.*;
 import static org.junit.Assert.assertTrue;
 

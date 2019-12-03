@@ -1,6 +1,8 @@
 import io.vavr.API;
 import io.vavr.control.Try;
 import org.junit.Test;
+import serializer.TrySerializator;
+import serializer.TrySerializator2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

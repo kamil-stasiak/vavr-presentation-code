@@ -1,3 +1,7 @@
+import gof2lambda.Circle;
+import gof2lambda.LambdaVisitor;
+import gof2lambda.Rectangle;
+import gof2lambda.Square;
 import org.junit.Test;
 
 import java.util.Arrays;

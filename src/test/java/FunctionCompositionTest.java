@@ -4,9 +4,8 @@ import io.vavr.control.Option;
 import lombok.Value;
 import org.junit.Test;
 
+import java.util.Objects;
 import java.util.function.Function;
-
-import static java.util.Objects.nonNull;
 
 @Value
 class PersonWithHands {
@@ -77,7 +76,7 @@ public class FunctionCompositionTest {
     }
 
     private <T> Option<T> maybe(T e) {
-        return nonNull(e)
+        return Objects.nonNull(e)
                 ? API.Some(e)
                 : API.None();
     }
@@ -85,17 +84,17 @@ public class FunctionCompositionTest {
     @Test
     public void rightHandDigBetterFlatMap() {
         String orNull = Option.of(person)
-                .flatMap(option(PersonWithHands::getRight))
-                .flatMap(option(Hand::getThumb))
-                .flatMap(option(Finger::getNail))
-                .flatMap(option(Nail::getText))
+                .flatMap(nonNull(PersonWithHands::getRight))
+                .flatMap(nonNull(Hand::getThumb))
+                .flatMap(nonNull(Finger::getNail))
+                .flatMap(nonNull(Nail::getText))
                 .getOrNull();
 
         System.out.println(orNull);
     }
 
-    private <T1, T2> Function<T1, Option<T2>> option(Function<T1, T2> fun) {
-        return (input) -> nonNull(input)
+    private <T1, T2> Function<T1, Option<T2>> nonNull(Function<T1, T2> fun) {
+        return (input) -> Objects.nonNull(input)
                 ? Option.some(fun.apply(input))
                 : Option.none();
     }
@@ -111,10 +110,10 @@ public class FunctionCompositionTest {
 
     private Option<String> getText(PersonWithHands person) {
         return Option.of(person)
-                .flatMap(option(PersonWithHands::getRight))
-                .flatMap(option(Hand::getThumb))
-                .flatMap(option(Finger::getNail))
-                .flatMap(option(Nail::getText));
+                .flatMap(nonNull(PersonWithHands::getRight))
+                .flatMap(nonNull(Hand::getThumb))
+                .flatMap(nonNull(Finger::getNail))
+                .flatMap(nonNull(Nail::getText));
     }
 
 }

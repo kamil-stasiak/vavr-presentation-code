@@ -19,7 +19,7 @@ public class CurringTest {
     }
 
     @Test
-    public void test2() {
+    public void curringFunction3() {
         Function1<String, Function1<Double, Function1<Integer, String>>> curriedString = function3.curried();
         Function1<Double, Function1<Integer, String>> curriedDouble = curriedString.apply("Curried");
         Function1<Integer, String> curriedInteger = curriedDouble.apply(23.5);
